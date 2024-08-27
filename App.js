@@ -1,20 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import QRCode from './screens/QRCode';
+import NFTDisplay from './screens/NFTDisplay';
+import WelcomeScreen from './screens/WelcomeScreen';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+const Stack = createNativeStackNavigator();
+function App(){
+  return(
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='Welcome'>
+        <Stack.Screen name="WelcomeScreen" component={WelcomeScreen}/>
+        <Stack.Screen name="QRCode" component={QRCode}/>
+        <Stack.Screen name="NFTDisplay" component={NFTDisplay}/>
+      </Stack.Navigator>
+    </NavigationContainer>
+  );  
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
